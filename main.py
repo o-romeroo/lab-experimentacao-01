@@ -17,6 +17,30 @@ def get_popular_repositories(num_repos):
         return response.json()["items"]
     else:
         raise Exception(f"Error fetching repositories: {response.status_code} - {response.text}")
+    
+def get_repository_age_years(repo_details):
+    created_at = repo_details["created_at"]
+    created_at_dt = datetime.strptime(created_at, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    now = datetime.now(timezone.utc)
+    age_years = (now - created_at_dt).days / 365.25
+    return age_years
+    
+def get_repository_pull_requests(owner, repository):
+    url = f"https://api.github.com/repos/{owner}/{repository}/pulls?state=all"
+    headers = {"Authorization": f"Token {token}"}
+    page = 1
+    pull_requests = []
+    while True:
+        response = requests.get(f"{url}&page={page}&per_page=100", headers=headers)
+        if response.status_code == 200:
+            page_pull_requests = response.json()
+            if not page_pull_requests:
+                break
+            pull_requests.extend(page_pull_requests)
+            page += 1
+        else:
+            raise Exception(f"Error fetching repository pull requests: {response.status_code}")
+    return len(pull_requests)
 
 def get_repositories_details(owner, repository):
     url = f"https://api.github.com/repos/{owner}/{repository}"
@@ -28,8 +52,8 @@ def get_repositories_details(owner, repository):
         return response.json()
     else:
         raise Exception(f"Error fetching repository details: {response.status_code} - {response.text}")
-    
-def get_releases_count(owner, repository):
+
+def get_repository_releases_count(owner, repository):
     url = f"https://api.github.com/repos/{owner}/{repository}/releases"
     headers = {"Authorization": f"Token {token}"}
     page = 1
