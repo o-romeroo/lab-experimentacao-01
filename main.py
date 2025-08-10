@@ -29,6 +29,17 @@ def get_repositories_details(owner, repository):
     else:
         raise Exception(f"Error fetching repository details: {response.status_code} - {response.text}")
     
+def get_releases_count(owner, repository):
+    url = f"https://api.github.com/repos/{owner}/{repository}/releases"
+    headers = {
+        "Authorization": f"Token {token}"
+    }
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        return len(response.json())
+    else:
+        raise Exception(f"Error fetching repository releases: {response.status_code} - {response.text}")
+    
 def hours_since_last_update(repo_details):
     updated_at = repo_details["updated_at"]
     updated_at_dt = datetime.strptime(updated_at, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
@@ -39,9 +50,7 @@ def hours_since_last_update(repo_details):
 
 
 if __name__ == "__main__":
-    # Exemplo usando um repositório público do GitHub
     owner = "pallets"
     repo = "flask"
     horas = hours_since_last_update(owner, repo)
     print(f"O repositório {owner}/{repo} foi atualizado há {int(horas)} horas.")
-    
