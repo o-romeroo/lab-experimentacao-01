@@ -16,3 +16,14 @@ def get_popular_repositories(keyword, num_repos):
         return response.json()["items"]
     else:
         raise Exception(f"Error fetching repositories: {response.status_code} - {response.text}")
+
+def get_repositories_details(owner, repository):
+    url = f"https://api.github.com/repos/{owner}/{repository}"
+    headers = {
+        "Authorization": f"Token {token}"
+    }
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        raise Exception(f"Error fetching repository details: {response.status_code} - {response.text}")
