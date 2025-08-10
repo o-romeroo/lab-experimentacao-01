@@ -47,8 +47,25 @@ def hours_since_last_update(repo_details):
     total = now - updated_at_dt
     return total.total_seconds() // 3600
 
-def primary_language(repo_details):
+def get_primary_language(repo_details):
     return repo_details["language"]
+
+def get_closed_issues(owner, repo):
+    url = f"https://api.github.com/repos/{owner}/{repo}/issues?state=closed"
+    headers = {"Authorization": "token {token}"}
+    page = 1
+    closed_issues = []
+    while True:
+        response = requests.get(f"{url}&page={page}&per_page=100", headers=headers)
+        if response.status_code == 200:
+            page_closed_issues = response.json()
+            if not page_closed_issues:
+                break
+            closed_issues.extend(page_closed_issues)
+            page += 1
+        else:
+            raise Exception(f"Failed to fetch closed issues: {response.status_code}")
+    return len(closed_issues)
 
 if __name__ == "__main__":
     owner = "pallets"
