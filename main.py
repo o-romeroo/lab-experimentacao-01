@@ -1,6 +1,7 @@
 import requests
 from dotenv import load_dotenv
 import os
+from datetime import datetime, timezone
 
 load_dotenv()
 
@@ -27,3 +28,20 @@ def get_repositories_details(owner, repository):
         return response.json()
     else:
         raise Exception(f"Error fetching repository details: {response.status_code} - {response.text}")
+    
+def hours_since_last_update(repo_details):
+    updated_at = repo_details["updated_at"]
+    updated_at_dt = datetime.strptime(updated_at, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    now = datetime.now(timezone.utc)
+    total = now - updated_at_dt
+    return total.total_seconds() // 3600
+
+
+
+if __name__ == "__main__":
+    # Exemplo usando um repositório público do GitHub
+    owner = "pallets"
+    repo = "flask"
+    horas = hours_since_last_update(owner, repo)
+    print(f"O repositório {owner}/{repo} foi atualizado há {int(horas)} horas.")
+    
