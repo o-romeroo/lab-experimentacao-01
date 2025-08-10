@@ -7,8 +7,8 @@ load_dotenv()
 
 token = os.getenv("token")
 
-def get_popular_repositories(keyword, num_repos):
-    url = f"https://api.github.com/search/repositories?q={keyword}&sort=stars&order=desc&per_page={num_repos}"
+def get_popular_repositories(num_repos):
+    url = f"https://api.github.com/search/repositories?q=stars:>0&sort=stars&order=desc&per_page={num_repos}"
     headers = {
         "Authorization": f"Token {token}"
     }
@@ -31,14 +31,20 @@ def get_repositories_details(owner, repository):
     
 def get_releases_count(owner, repository):
     url = f"https://api.github.com/repos/{owner}/{repository}/releases"
-    headers = {
-        "Authorization": f"Token {token}"
-    }
-    response = requests.get(url, headers=headers)
-    if response.status_code == 200:
-        return len(response.json())
-    else:
-        raise Exception(f"Error fetching repository releases: {response.status_code} - {response.text}")
+    headers = {"Authorization": f"Token {token}"}
+    page = 1
+    releases = []
+    while True:
+        response = requests.get(f"{url}?page={page}&per_page=100", headers=headers)
+        if response.status_code == 200:
+            page_releases = response.json()
+            if not page_releases:
+                break
+            releases.extend(page_releases)
+            page += 1
+        else:
+            raise Exception(f"Error fetching repository releases: {response.status_code} - {response.text}")
+    return len(releases)
     
 def hours_since_last_update(repo_details):
     updated_at = repo_details["updated_at"]
@@ -68,7 +74,11 @@ def get_closed_issues(owner, repo):
     return len(closed_issues)
 
 if __name__ == "__main__":
-    owner = "pallets"
-    repo = "flask"
-    releases_count = get_releases_count(owner, repo)
-    print(f"O repositório {owner}/{repo} tem {releases_count} lançamentos.")
+    try:
+        popular_repos = get_popular_repositories(10)
+        for idx, repo in enumerate(popular_repos, start=1):
+            full_name = repo.get("full_name", "unknown")
+            stars = repo.get("stargazers_count", 0)
+            print(f"{idx}. {full_name} - {stars} stars")
+    except Exception as e:
+        print(f"Erro ao obter repositórios populares: {e}")
