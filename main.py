@@ -47,10 +47,11 @@ def hours_since_last_update(repo_details):
     total = now - updated_at_dt
     return total.total_seconds() // 3600
 
-
+def primary_language(repo_details):
+    return repo_details["language"]
 
 if __name__ == "__main__":
     owner = "pallets"
     repo = "flask"
-    horas = hours_since_last_update(owner, repo)
-    print(f"O repositório {owner}/{repo} foi atualizado há {int(horas)} horas.")
+    releases_count = get_releases_count(owner, repo)
+    print(f"O repositório {owner}/{repo} tem {releases_count} lançamentos.")
