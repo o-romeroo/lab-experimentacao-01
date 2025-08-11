@@ -128,5 +128,4 @@ if __name__ == "__main__":
         popular_repos = get_popular_repositories(100)
         collect_and_save_repo_info(popular_repos)
     except Exception as e:
-        print(f"Erro ao obter repositórios populares: {e}")
-    
+        print(f"Error fetching popular repositories: {e}")
