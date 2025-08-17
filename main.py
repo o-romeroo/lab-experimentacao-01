@@ -195,13 +195,13 @@ def collect_and_save_repo_info(repos):
         open_issues_count = repo_details["open_issues_count"]
         closed_issues_count = get_closed_issues(owner, repo_name)
         total_issues = open_issues_count + closed_issues_count
-        closed_issues_percentage = (closed_issues_count / total_issues * 100) if total_issues > 0 else 0.0
+        closed_issues_percentage = round((closed_issues_count / total_issues * 100), 2) if total_issues > 0 else 0.0
 
         pull_requests_count = get_merged_pull_requests_count(owner, repo_name)
         releases_count = get_repository_releases_count(owner, repo_name)
         hours_since_last_update = get_hours_since_last_update(repo_details)
         primary_language = get_primary_language(repo_details)
-        repo_age = get_repository_age_years(repo_details)
+        repo_age = round(get_repository_age_years(repo_details), 2)
 
         rows.append({
             "full_name": repo["full_name"],
