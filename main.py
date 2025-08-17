@@ -98,7 +98,7 @@ def collect_and_save_repo_info(repos):
         open_issues_count = repo_details["open_issues_count"]
         closed_issues_count = get_closed_issues(owner, repo_name)
         total_issues = open_issues_count + closed_issues_count
-        closed_issues_percentage = round((closed_issues_count / total_issues * 100),2) if total_issues > 0 else 0.0
+        closed_issues_percentage = round((closed_issues_count / total_issues * 100), 2) if total_issues > 0 else 0.0
 
         pull_requests_count = get_merged_pull_requests_count(owner, repo_name)
         releases_count = get_repository_releases_count(owner, repo_name)
