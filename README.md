@@ -19,8 +19,8 @@ As expectativas iniciais (hipóteses) são:
 - H2 (RQ02): Sistemas populares recebem muita contribuição externa, devido à atuação de comunidades ativas que propõem novas funcionalidades, reportam bugs e sugerem melhorias.
 - H3 (RQ03): Sistemas populares lançam releases com frequência, mantendo-se atualizados e funcionais, evitando depreciação e corrigindo eventuais bugs.
 - H4 (RQ04): Sistemas populares são atualizados com frequência, em linha com a cadência de releases e a atividade contínua da comunidade.
-- H5 (RQ05): Sistemas populares são escritos nas linguagens mais populares, tipicamente linguagens consolidadas como Java, C++ e PHP; ainda que não necessariamente na linguagem mais popular do momento, tendem a figurar entre as 10 mais utilizadas.
-- H6 (RQ06): Sistemas populares possuem alto percentual de issues fechadas, pois muitas contribuições se originam em issues que são encerradas após o merge das alterações.
+- H5 (RQ05): Sistemas populares são escritos nas linguagens mais populares, tipicamente linguagens consolidadas como Java, C++ e PHP, ainda que não necessariamente na linguagem mais popular do momento (Python), acreditamos que estas estarão entre as 10 mais utilizadas.
+- H6 (RQ06): Sistemas populares possuem alto percentual de issues fechadas, pois contam com muitos contribuidores ativos. Sendo assim, a proporção de issues encerradas em relação às abertas tende a ser maior.
 
 ## Metodologia
 
