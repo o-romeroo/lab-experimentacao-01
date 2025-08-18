@@ -28,7 +28,7 @@ As expectativas iniciais (hipóteses) são:
 
 ## Resultados
 
-.[Arquivo de dados retornados pela API ](data/repository_data.csv "Dados retornados pela chamada da API").
+[Arquivo de dados dos repositórios retornados pela API](data/repository_data.csv "Dados retornados pela chamada da API")
 
 ## Discussão
 
