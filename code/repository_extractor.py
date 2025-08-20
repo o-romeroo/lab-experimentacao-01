@@ -228,7 +228,7 @@ def collect_and_save_repo_info(repos):
         })
         time.sleep(3)
     df = pd.DataFrame(rows)
-    df.to_csv("repository_data.csv", index=False)
+    df.to_csv("data/repository_data.csv", index=False)
 
 
 if __name__ == "__main__":

@@ -69,7 +69,7 @@ def median_closed_issues_percentage(df):
     return round(df["closed_issues_percentage"].median(), 2)
 
 def main():
-    df = pd.read_csv("repository_data.csv")
+    df = pd.read_csv("data/repository_data.csv")
 
     median_data = {
         "median_repository_age": median_repository_age(df),
@@ -80,7 +80,7 @@ def main():
         "median_closed_issues_percentage": median_closed_issues_percentage(df)
     }
     median_df = pd.DataFrame([median_data])
-    median_df.to_csv("median_repository_data.csv", index=False)
+    median_df.to_csv("data/median_repository_data.csv", index=False)
 
 if __name__ == "__main__":
     main()
