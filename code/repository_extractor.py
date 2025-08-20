@@ -11,26 +11,37 @@ load_dotenv()
 token = os.getenv("token")
 
 def get_popular_repositories(num_repos):
-    """Retorna os repositórios mais populares do GitHub.
+    """
+    Retorna os repositórios mais populares do GitHub, ordenados por número de estrelas.
 
     Parâmetros:
-    - num_repos (int): número máximo de repositórios a buscar por página na API.
+    - num_repos (int): número máximo de repositórios a buscar (até 1000).
 
     Retorna:
     - list: lista de dicionários, cada um representando um repositório conforme o campo "items" da resposta da API.
 
     Arremessa:
-    - Exception: se a requisição HTTP não retornar status 200.
+    - Exception: se alguma requisição HTTP não retornar status 200.
+
+    Observações:
+    - A função faz a paginação automaticamente para buscar mais de 100 repositórios, respeitando o limite de 1000 imposto pela API do GitHub.
+    - Insere um delay de 2 segundos entre as requisições para evitar atingir o rate limit da API.
     """
-    url = f"https://api.github.com/search/repositories?q=stars:>0&sort=stars&order=desc&per_page={num_repos}"
-    headers = {
-        "Authorization": f"Token {token}"
-    }
-    response = requests.get(url, headers=headers)
-    if response.status_code == 200:
-        return response.json()["items"]
-    else:
-        raise Exception(f"Error fetching repositories: {response.status_code} - {response.text}")
+    all_repos = []
+    per_page = 100
+    for page in range(1, (num_repos // per_page) + 2):
+        url = f"https://api.github.com/search/repositories?q=stars:>0&sort=stars&order=desc&per_page={per_page}&page={page}"
+        headers = {"Authorization": f"Token {token}"}
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            items = response.json()["items"]
+            all_repos.extend(items)
+            if len(all_repos) >= num_repos or not items:
+                break
+        else:
+            raise Exception(f"Error fetching repositories: {response.status_code} - {response.text}")
+        time.sleep(2)  
+    return all_repos[:num_repos]
     
 def get_repository_age_years(repo_details):
     """Calcula a idade do repositório em anos.
@@ -217,12 +228,12 @@ def collect_and_save_repo_info(repos):
         })
         time.sleep(3)
     df = pd.DataFrame(rows)
-    df.to_excel("repository_data.xlsx", index=False)
+    df.to_csv("repository_data.csv", index=False)
 
 
 if __name__ == "__main__":
     try:
-        popular_repos = get_popular_repositories(100)
+        popular_repos = get_popular_repositories(1000)
         collect_and_save_repo_info(popular_repos)
     except Exception as e:
         print(f"Error fetching popular repositories: {e}")
