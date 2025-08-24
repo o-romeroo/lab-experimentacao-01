@@ -46,7 +46,7 @@ A **Figura 2** mostra o tempo decorrido desde a última atualização, em horas.
 
 ![Figura 2. Recência de atualização dos repositórios em horas.](graphs/update_recency.png)
 
-A **Figura 3** apresenta o throughput de manutenção, considerando a cadência de releases e pull requests mesclados. Observamos uma média de **≈ 4,2 releases/ano** e **≈ 82,5 PRs/ano** em nossa amostra. Embora o artigo de Coelho et al. (2020) não estabeleça limiares fixos para essas métricas isoladamente, os autores destacam que a cadência de releases e a absorção de contribuições externas são componentes-chave do LMA, refletindo a vitalidade de um projeto. Assim, mesmo sem o cálculo formal do índice, nossos resultados reforçam que a amostra se aproxima do perfil de projetos com LMA elevado.
+A **Figura 3** apresenta o throughput de manutenção (isto é, a quantidade média de entregas e contribuições integradas por ano), considerando a cadência de releases e pull requests mesclados. Observamos uma média de **≈ 4,2 releases/ano** e **≈ 82,5 PRs/ano** em nossa amostra. Embora o artigo de Coelho et al. (2020) não estabeleça limiares fixos para essas métricas isoladamente, os autores destacam que a cadência de releases e a absorção de contribuições externas são componentes-chave do LMA, refletindo a vitalidade de um projeto. Assim, mesmo sem o cálculo formal do índice, nossos resultados reforçam que a amostra se aproxima do perfil de projetos com LMA elevado.
 
 ![Figura 3. Throughput de manutenção: cadência de releases e pull requests mesclados.](graphs/throughput_maintence.png)
 
