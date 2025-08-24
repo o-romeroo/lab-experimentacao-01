@@ -50,7 +50,7 @@ A **Figura 3** apresenta o throughput de manutenção, considerando a cadência 
 
 ![Figura 3. Throughput de manutenção: cadência de releases e pull requests mesclados.](graphs/throughput_maintence.png)
 
-De forma geral, ao relacionar as métricas coletadas com os limiares propostos por **Coelho et al. (2020)**, verificamos que os repositórios minerados apresentam características compatíveis com projetos altamente mantidos, situando-se entre a **mediana (82)** e o **terceiro quartil (97)** do LMA. A alta taxa de fechamento de issues, a recência extrema das atualizações e o ritmo constante de releases e pull requests corroboram a presença de manutenção contínua e engajamento da comunidade, o que reforça a validade dos nossos resultados frente à literatura.
+Ao relacionar as métricas coletadas com os limiares propostos por **Coelho et al. (2020)**, verificamos que os repositórios minerados apresentam características compatíveis com projetos altamente mantidos, situando-se entre a **mediana (82)** e o **terceiro quartil (97)** do LMA. A alta taxa de fechamento de issues, a recência extrema das atualizações e o ritmo constante de releases e pull requests corroboram a presença de manutenção contínua e engajamento da comunidade, o que reforça a validade dos nossos resultados frente à literatura.
 
 ## Referências
 
