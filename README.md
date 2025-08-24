@@ -40,7 +40,7 @@ A **Figura 1** apresenta a comparação entre o percentual de issues fechadas da
 
 ![Figura 1. Percentual de issues fechadas em comparação com os limiares de LMA descritos por Coelho et al. (2020).](graphs/closed_issues.png)
 
-A **Figura 2** mostra a recência de atualização dos repositórios em horas. Em nossos dados, a mediana foi de apenas **1 hora** desde a última atualização, ao passo que, segundo Coelho et al. (2020), limiares clássicos de inatividade consideram **30 dias (720h)** como ponto de atenção e **1 ano (8760h)** como forte sinal de abandono. Ainda que a métrica de LMA incorpore não apenas a última atualização, mas também a consistência da atividade ao longo do tempo, a discrepância encontrada é evidente: os repositórios analisados apresentam atualização substancialmente mais frequente que os parâmetros de referência, reforçando sua caracterização como plenamente ativos.
+A **Figura 2** mostra o tempo decorrido desde a última atualização, em horas. Em nossos dados, a mediana foi de apenas **1 hora** desde a última atualização, ao passo que, segundo Coelho et al. (2020), limiares clássicos de inatividade consideram **30 dias (720h)** como ponto de atenção e **1 ano (8760h)** como forte sinal de abandono. Ainda que a métrica de LMA incorpore não apenas a última atualização, mas também a consistência da atividade ao longo do tempo, a discrepância encontrada é evidente: os repositórios analisados apresentam atualização substancialmente mais frequente que os parâmetros de referência, reforçando sua caracterização como plenamente ativos.
 
 ![Figura 2. Recência de atualização dos repositórios em horas.](graphs/update_recency.png)
 
