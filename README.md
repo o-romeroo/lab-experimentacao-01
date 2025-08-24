@@ -32,6 +32,8 @@ As expectativas iniciais (hipóteses) são:
 
 ## Discussão
 
+## Trabalhos Relacionados
+
 Tomando como referência os limiares estabelecidos por **Coelho et al. (2020)** no artigo *"Is this GitHub Project Maintained? Measuring the Level of Maintenance Activity of Open-Source Projects"*. O objetivo central dos autores foi propor e validar a métrica **Level of Maintenance Activity (LMA)**, construída a partir de séries temporais de indicadores de repositórios no GitHub (commits, issues, pull requests, releases e atividade de contribuidores). Essa métrica procura responder a uma questão recorrente na literatura: como distinguir, de forma automática e confiável, projetos mantidos de projetos abandonados.
 
 O modelo de LMA desenvolvido por Coelho et al. utiliza múltiplos atributos para gerar um índice contínuo de **0 a 100**, no qual valores mais altos indicam maior probabilidade de um projeto ser mantido ativamente. No conjunto de validação do estudo, projetos com LMA acima de **82 (mediana)** foram classificados como mantidos, enquanto valores próximos ou abaixo de **48 (Q1)** caracterizaram inatividade. O **Q3 (97)** representou projetos com manutenção muito intensa.
