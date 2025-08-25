@@ -53,8 +53,8 @@ Para análise, calculamos as medianas das métricas obtidas de uma amostra de 1.
 	- Mediana (linguagem primária): MDX, mas não é adequada para esta análise, pois acreditamos que ela não é uma métrica eficaz para determinar se a linguagem principal dos repositórios analisados está entre as mais populares. Para esse fim, consideramos mais apropriado utilizar o somatório da quantidade de repositórios que possuem cada linguagem como principal.
 	- Distribuição de linguagens (contagem de repositórios). Top 5 em negrito.
 
-| Linguagem | Popularidade em 2024 | Contagem |
-|-----------|----------|
+| **Linguagem** | **Popularidade em 2024** | **Contagem** |
+|-----------|----------|----------|
 | **Python** | 1º | 188 |
 | **TypeScript** | 3º | 156 |
 | **JavaScript** | 2º | 130 |
